@@ -18,3 +18,5 @@ JSON variable in js/soundscapes.js
 I am releasing this program under GPL v3.0.
 
 Have fun!
+
+Copyright (C) 2016 Alexander Chen
