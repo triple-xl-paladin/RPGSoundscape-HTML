@@ -46,10 +46,38 @@ function get_playlist(soundtab)
 
 function music_player_events()
 {
-  var p = $("#music-player");
+  //console.log('music player called '+ident);
+  //var idf = '#'+ident;
+  //var p = $(idf);
+  var p = $('.music-player');
+  //console.log(p.attr("pnum"));
 
   // I should be able to find out which parent this is and get the playlist that way instead of the loop from above.
   p.on('ended', function() {
+    //console.log('play ended');
+    var soundtab = $(this).prop("id");
+    var music_location = "soundset/fantasy/music/";
+    var music_name = $(this).siblings("span");
+    var playlist = get_playlist(soundtab);
+    var song = shuffle(playlist)[0];
+
+    //var data = "Song: "+song+" soundtab: "+soundtab;
+
+    //db.l(data);
+
+    $(this).attr("src",music_location+song.mp3);
+    music_name.html(song.title);
+    $(this).trigger("play");
+  });
+}
+
+function mp_event()
+{
+  var p = $(this);
+
+  // I should be able to find out which parent this is and get the playlist that way instead of the loop from above.
+  p.on('ended', function() {
+    console.log('play ended');
     var soundtab = p.closest("section").attr("id");
     var music_location = "soundset/fantasy/music/";
     var music_name = $('#song_title');

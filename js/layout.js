@@ -89,20 +89,22 @@ function add_effects_player(effects_list){
 /**
  * Adds a music player
  */
-function add_music_player(playlist) {
+function add_music_player(soundscene, playlist) {
 
   var song = shuffle(playlist)[0];
   var music_location = "soundset/fantasy/music/";
+
   var html_out = 
     '      <div class="player mdl-card mdl-shadow--4dp">'+
     '        <div class="mdl-card__supporting-text mdl-card__border">'+
     '          <div class="player-button">'+
     '            Music: <span id="song_title">'+song.title+'</span><br/>'+
     '            <button><img src="icons/media-playback-start.svg" height="45px" width="45px"></img></button>'+
+    //'            <audio class="music-player" id="'+soundscene+'" controls src="'+music_location+song.mp3+'" type="audio/mpeg"></audio>'+
+    '            <audio class="music-player" id="'+soundscene+'" src="'+music_location+song.mp3+'" type="audio/mpeg"></audio>'+
     '          </div>'+
     '          <div class="player-volume">'+
     '            <input type="range" min="0" max="100" value="0"><br/>'+
-    '            <audio id="music-player" controls src="'+music_location+song.mp3+'" type="audio/mpeg"></audio>'+
     '          </div>'+
     '        </div>'+
     '      </div>';
@@ -144,7 +146,7 @@ function build() {
     page_content_output +=
     '  <section class="mdl-layout__tab-panel '+active+'" id="'+soundscene_name+'">'+
     '    <div class="page-content"><!-- Your content goes here -->'+
-           add_music_player(soundscene_playlist) + add_effects_player(soundscene_effects_list)+
+           add_music_player(soundscene_name, soundscene_playlist) + add_effects_player(soundscene_effects_list)+
     '    </div>'+
     '  </section>';
   }

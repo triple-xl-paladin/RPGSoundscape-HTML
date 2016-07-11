@@ -108,3 +108,9 @@ input[type='range']::-webkit-slider-thumb {
   left: 70px;
   width: 300px;
 }
+
+audio {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+}
